@@ -1,6 +1,6 @@
 <div class="container mt-5" *ngIf="messages">
-  <ul *ngFor="let message of messages" class="list-group">
-    <li class="list-group-item">{{ message }}</li>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let message of messages">{{ message }}</li>
   </ul>
 </div>
 

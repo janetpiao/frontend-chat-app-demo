@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatServices } from '../../services/chatServices';
+import { NgZone } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
@@ -15,7 +17,10 @@ export class Chat implements OnInit {
     this.listenMessage();
   }
 
-  constructor(private chatService: ChatServices) {}
+  constructor(
+    private chatService: ChatServices, 
+    private ngZone: NgZone,
+    private cdr: ChangeDetectorRef) {}
 
   public sendMessage() {
     this.chatService.sendMessage(this.message);
@@ -24,9 +29,13 @@ export class Chat implements OnInit {
   }
 
   public listenMessage() {
-    this.chatService.listenMessage().subscribe((data: any) => {
+  this.chatService.listenMessage().subscribe((data: any) => {
+    this.ngZone.run(() => {
       console.log(data);
-      this.messages.push(data);
+
+      // IMPORTANT: push correct field
+      this.messages.push(data.data); 
+      this.cdr.detectChanges();
     });
-  }
-}
+  });
+}}

@@ -8,11 +8,11 @@ import { map } from 'rxjs';
 export class ChatServices {
   constructor(private socket: Socket) {}
 
-  public sendMessage(message: string){
+  public sendMessage(message: string) {
     this.socket.emit('message', message);
   }
 
-  public listenMessage(){
-    return (this.socket.fromEvent('received').pipe(map((data: any) => data)));
+  public listenMessage() {
+    return this.socket.fromEvent('received').pipe(map((data: any) => data));
   }
 }
