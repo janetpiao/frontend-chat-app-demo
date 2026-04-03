@@ -1,10 +1,16 @@
-<div class="container mt-5" *ngIf="messages">
+<div class="notification" *ngIf="showNotification">
+  New message received!
+</div>
+
+<div class="container mt-5">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let message of messages">{{ message }}</li>
+    <li class="list-group-item" *ngFor="let message of messages">
+      {{ message }}
+    </li>
   </ul>
 </div>
 
-<form>
+<form (submit)="$event.preventDefault()">
   <input type="text" name="message" [(ngModel)]="message" placeholder="Type your message here..." />
   <button (click)="sendMessage()">Send</button>
 </form>

@@ -11,7 +11,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
 @NgModule({
   declarations: [App, Chat],
-  imports: [BrowserModule, AppRoutingModule, SocketIoModule.forRoot(config), FormsModule,],
+  imports: [BrowserModule, AppRoutingModule, SocketIoModule.forRoot(config), FormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })

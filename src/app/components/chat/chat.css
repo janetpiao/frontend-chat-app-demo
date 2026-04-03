@@ -1,0 +1,14 @@
+.notification {
+  background: #4caf50;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.notification:not(:empty) {
+  opacity: 1;
+}
