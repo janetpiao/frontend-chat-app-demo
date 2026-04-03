@@ -1,10 +1,10 @@
-<div *ngIf="messages">
-    <ul *ngFor="let message of messages">
-        <li></li>
+<div class="container mt-5" *ngIf="messages">
+    <ul *ngFor="let message of messages" class="list-group">
+      <li class="list-group-item">{{ message }}</li>
     </ul>
 </div>
 
 <form>
-    <input type="text" name="message" [(ngModel)]="message" placeholder="Type your message here..." />
-    <button (click)="sendMessage()">Send</button>
+  <input type="text" name="message" [(ngModel)]="message" placeholder="Type your message here..." />
+  <button (click)="sendMessage()">Send</button>
 </form>
