@@ -7,7 +7,7 @@ import { Chat } from './components/chat/chat';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
 
-const config: SocketIoConfig = { url: 'https://frontend-chat-app-pearl.vercel.app/', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
 @NgModule({
   declarations: [App, Chat],
