@@ -31,14 +31,17 @@ export class Chat  {
   this.chatService.listenMessage().subscribe((data: any) => {
     console.log(data);
 
+    // update messages
     this.messages = [...this.messages, data.data];
 
-    this.notification = 'New message received!';
+    // show notification
+    this.showNotification = true;
 
-    this.cdr.markForCheck(); // ✅ tell Angular to update
+    this.cdr.markForCheck(); // ✅ tell Angular to update UI
 
+    // hide after 2 seconds
     setTimeout(() => {
-      this.notification = '';
+      this.showNotification = false;
       this.cdr.markForCheck(); // ✅ update again
     }, 2000);
   });
