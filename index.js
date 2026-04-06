@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
 });
 
 // use environment port (VERY IMPORTANT for Render)
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // start server
 httpServer.listen(PORT, () => {
