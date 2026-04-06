@@ -1,3 +1,4 @@
+const express = require('express');
 const{Server} = require('socket.io');
 const http = require('http');
 
@@ -16,10 +17,11 @@ const http = require('http');
 
 // Code for deployment on Render.com
 // create HTTP server
-const httpServer = http.createServer();
+const app = express();
+const server = http.createServer(app);
 
 // create socket server with CORS
-const io = new Server(httpServer, {
+const io = new Server(server, {
   cors: {
     origin: "*", // allow all (simplest for now), add Vercel URL later
   }
@@ -43,6 +45,11 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 4000;
 
 // start server
-httpServer.listen(PORT, () => {
-  console.log('Server running on port', PORT);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// optional but helps Render detect HTTP
+app.get('/', (req, res) => {
+  res.send('Server is running');
 });
