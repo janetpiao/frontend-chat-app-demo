@@ -18,9 +18,6 @@ const http = require('http');
 // create HTTP server
 const httpServer = http.createServer();
 
-// use environment port (VERY IMPORTANT for Render)
-const PORT = process.env.PORT || 4000;
-
 // create socket server with CORS
 const io = new Server(httpServer, {
   cors: {
@@ -41,6 +38,9 @@ io.on('connection', (socket) => {
     });
   });
 });
+
+// use environment port (VERY IMPORTANT for Render)
+const PORT = 4000;
 
 // start server
 httpServer.listen(PORT, () => {
